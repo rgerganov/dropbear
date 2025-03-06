@@ -110,6 +110,7 @@ static void printhelp(const char * progname) {
 					"-K <keepalive>  (0 is never, default %d, in seconds)\n"
 					"-I <idle_timeout>  (0 is never, default %d, in seconds)\n"
 					"-z    disable QoS\n"
+					"-A <skipfile>\n"
 #if DROPBEAR_PLUGIN
                                         "-A <authplugin>[,<options>]\n"
                                         "               Enable external public key auth through <authplugin>\n"
@@ -147,6 +148,7 @@ void svr_getopts(int argc, char ** argv) {
 	char* maxauthtries_arg = NULL;
 	char* reexec_fd_arg = NULL;
 	char* keyfile = NULL;
+	char* skipfile = NULL;
 	char c;
 #if DROPBEAR_PLUGIN
         char* pubkey_plugin = NULL;
@@ -321,6 +323,9 @@ void svr_getopts(int argc, char ** argv) {
 					break;
 				case 'u':
 					/* backwards compatibility with old urandom option */
+					break;
+				case 'A':
+					next = &skipfile;
 					break;
 #if DROPBEAR_PLUGIN
                                 case 'A':

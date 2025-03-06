@@ -146,7 +146,7 @@ IMPORTANT: Some options will require "make clean" after changes */
  * RSA key generation will be faster with bundled libtommath
  * if DROPBEAR_DSS is disabled.
  * https://github.com/mkj/dropbear/issues/174#issuecomment-1267374858 */
-#define DROPBEAR_DSS 0
+#define DROPBEAR_DSS 1
 /* ECDSA is significantly faster than RSA or DSS. Compiling in ECC
  * code (either ECDSA or ECDH) increases binary size - around 30kB
  * on x86-64.
